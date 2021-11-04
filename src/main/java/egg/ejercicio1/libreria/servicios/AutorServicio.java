@@ -72,6 +72,7 @@ public class AutorServicio {
             throw new ErrorServicio("no existe ese autor");            
         }
     }
+    @Transactional
      public void darAlta(String ID) throws ErrorServicio {
        
        
