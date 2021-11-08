@@ -1,14 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
-    private Integer ejemplares;
-    private Integer ejemplaresPrestados;
-    private Integer ejemplaresRestantes;
-   
 
-
- */
 package egg.ejercicio1.libreria.servicios;
 
 import egg.ejercicio1.libreria.entidades.Autor;
@@ -16,7 +6,6 @@ import egg.ejercicio1.libreria.entidades.Editorial;
 import egg.ejercicio1.libreria.entidades.Libro;
 import egg.ejercicio1.libreria.exepcion.ErrorServicio;
 import egg.ejercicio1.libreria.repositores.LibroReposit;
-import static java.lang.Boolean.FALSE;
 import java.util.Optional;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
