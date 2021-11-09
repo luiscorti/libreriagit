@@ -14,7 +14,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface AutorReposit extends JpaRepository<Autor, String> {
     
-    @Query("SELECT c FROM Autor c WHERE C.nombre = :nombre")
+    @Query("SELECT c FROM Autor c WHERE c.nombre = :nombre")
     public Autor buscarporNombre(@Param("nombre") String nombre);
     
 }

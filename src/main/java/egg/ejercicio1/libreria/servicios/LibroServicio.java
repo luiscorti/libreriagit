@@ -1,4 +1,8 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package egg.ejercicio1.libreria.servicios;
 
 import egg.ejercicio1.libreria.entidades.Autor;
@@ -20,21 +24,10 @@ public class LibroServicio {
     @Transactional
     private void registrarLibro(Long isbn, String titulo, Integer anio, Autor autor, Editorial editorial, Integer ejemplares, Integer ejemplaresPrestados, Integer ejemplaresRestantes) throws ErrorServicio {
 
-        if (titulo == null || titulo.isEmpty()) {
-            throw new ErrorServicio("el titulo no puede ser nulo");
-        }
-        if (anio == null) {
-            throw new ErrorServicio("el año no puede ser nulo");
-        }
-        if (isbn == null) {
-            throw new ErrorServicio("el isbn no puede ser nulo");
-        }
-        if (autor == null) {
-            throw new ErrorServicio("el autor no puede ser nulo");
-        }
-        if (editorial == null) {
-            throw new ErrorServicio("el editorial no puede ser nulo");
-        }
+        
+        
+        validarLibro(isbn, titulo, anio, autor, editorial, ejemplares, ejemplaresPrestados, ejemplaresRestantes);
+        
         Libro libro = new Libro();
         libro.setAlta(true);
         libro.setTitulo(titulo);

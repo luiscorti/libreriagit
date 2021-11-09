@@ -14,7 +14,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface LibroReposit extends JpaRepository<Libro, String>{
-   @Query("SELECT c FROM Libro c WHERE C.isbn = :isbn")
+   @Query("SELECT c FROM Libro c WHERE c.isbn = :isbn")
     public Libro buscarporisbn(@Param("isbn") Long isbn);
     
 

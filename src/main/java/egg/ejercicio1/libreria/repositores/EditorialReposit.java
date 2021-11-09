@@ -13,7 +13,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 @Repository
 public interface EditorialReposit extends JpaRepository<Editorial, String>{
-     @Query("SELECT c FROM Editorial c WHERE C.nombre = :nombre")
+     @Query("SELECT c FROM Editorial c WHERE c.nombre = :nombre")
     public Editorial buscarporNombre(@Param("nombre") String nombre);
     
     
