@@ -1,14 +1,17 @@
-
 package egg.ejercicio1.libreria.entidades;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import org.hibernate.annotations.GenericGenerator;
+;
 
 @Entity
 public class Autor {
+
     @Id
-    @GeneratedValue 
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "uuid2")
     private String id;
     private String nombre;
     private Boolean alta;
@@ -36,5 +39,5 @@ public class Autor {
     public void setAlta(Boolean alta) {
         this.alta = alta;
     }
-    
+
 }

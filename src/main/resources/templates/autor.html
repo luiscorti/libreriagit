@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -36,10 +36,21 @@
             <td class="table-primary">Larry the Bird</td>
             <td class="table-primary">Thornton</td>
           </tr>
+          
         </tbody>
       </table>
+ <p class="h1">ingresar autor</p>
 
-
+<form th:action="@{/autor/registro}" method="POST">
+        <div class="mb-3">
+          <label >NOMBRE</label>
+          <input type="text" class="form-control" name="nombre" placeholder="Nombre de la mascota" >
+         
+        </div>
+    
+        
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
 
 
 

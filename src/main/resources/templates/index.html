@@ -1,50 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <title>Libreria</title>
-</head>
-<body>
-    
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <title>Libreria</title>
+    </head>
+    <body>
 
-<p class="h1">Libreria</p>
 
-<div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
-    <div class="card-header">Libros</div>
-    <div class="card-body">
-      <h5 class="card-title">Coleccion de libros</h5>
-      <p class="card-text">aqui podra disfrutar de nuestra gran biblioteca de libros </p>
-      <button type="button" class="btn btn-dark">Ir a biblioteca</button>
-    </div>
-  </div>
-<div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
-    <div class="card-header">AUTORES</div>
-    <div class="card-body">
-      <h5 class="card-title">Lista de nuestos autores </h5>
-      <p class="card-text">Aqui podra encotrar tosoa nuestros autores </p>
-      <button type="button" class="btn btn-dark">Ir a listado</button>
-    </div>
-  </div>
+        <p class="h1">Libreria</p>
 
-  <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
-    <div class="card-header">Editoriales</div>
-    <div class="card-body">
-      <h5 class="card-title">lista de editoriales q</h5>
-      <p class="card-text">aquie podra encotrar las mejores deitoriales con las cuales contamos </p>
-      <button type="button" class="btn btn-dark">ir a listado</button>
-    </div>
-  </div>
- 
- 
+        <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+            <div class="card-header">Libros</div>
+            <div class="card-body">
+                <h5 class="card-title">Coleccion de libros</h5>
+                <p class="card-text">aqui podra disfrutar de nuestra gran biblioteca de libros </p>
+                <a class="btn btn-dark" th:href="@{/libro/}" role="button">Ir a biblioteca</a>
+            </div>
+        </div>
+        <div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
+            <div class="card-header">AUTORES</div>
+            <div class="card-body">
+                <h5 class="card-title">Lista de nuestos autores </h5>
+                <p class="card-text">Aqui podra encotrar tosoa nuestros autores </p>
+                <a class="btn btn-dark" th:href="@{/autor/}" role="button">Ir a listado</a>
+            </div>
+        </div>
+
+        <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
+            <div class="card-header">Editoriales</div>
+            <div class="card-body">
+                <h5 class="card-title">lista de editoriales q</h5>
+                <p class="card-text">aquie podra encotrar las mejores deitoriales con las cuales contamos </p>
+                <a class="btn btn-dark" th:href="@{/editorial/}" role="button">Ir a listado</a>
+            </div>
+        </div>
 
 
 
 
 
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
-</body>
+
+
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+    </body>
 </html>
