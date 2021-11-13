@@ -8,8 +8,21 @@
     <title>Editoriales</title>
 </head>
 <body>
+    
     <p class="h1">EDITORIALES</p>
     <table class="table">
+         <div th:if="${perfect}!=null" class="card text-white bg-success mb-3" >
+                <div class="card-body">
+                    <h5 class="card-title">ESO TILIN </h5>
+                    <p class="card-text" th:text="${perfect}"></p>
+                </div>
+            </div>
+             <div th:if="${mal}!=null" class="card text-white bg-danger mb-3" >
+                <div class="card-body">
+                    <h5 class="card-title">JAJAJAJA</h5>
+                    <p class="card-text" th:text="${mal}"></p>
+                </div>
+            </div>
         <thead>
           <tr class="table-success">
             <th scope="col">NOMBRE</th>
@@ -38,6 +51,18 @@
           </tr>
         </tbody>
       </table>
+ <p class="h1">ingresar editorial</p>
+
+    <form th:action="@{/editorial/registro}" method="POST">
+        <div class="mb-3">
+            <label >NOMBRE</label>
+            <input type="text" class="form-control" name="nombre"  >
+
+        </div>
+
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
 
 
 
