@@ -8,6 +8,7 @@ package egg.ejercicio1.libreria.servicios;
 import egg.ejercicio1.libreria.entidades.Editorial;
 import egg.ejercicio1.libreria.exepcion.ErrorServicio;
 import egg.ejercicio1.libreria.repositores.EditorialReposit;
+import java.util.List;
 import java.util.Optional;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -87,6 +88,18 @@ public class EditorialServicio {
         } else {
             throw new ErrorServicio("no existe esa editorial");
         }
+
+    }
+    
+     @Transactional
+    public List<Editorial> listarTodos() {
+        return editorialReposit.findAll();
+    }
+
+    @Transactional
+    public Editorial buscar(String id) {
+
+        return editorialReposit.getById(id) ;
 
     }
 }

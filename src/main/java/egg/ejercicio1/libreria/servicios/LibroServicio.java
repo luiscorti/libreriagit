@@ -17,16 +17,14 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class LibroServicio {
-
+    
     @Autowired
     private LibroReposit libroReposit;
-
+    
     @Transactional
-    private void registrarLibro(Long isbn, String titulo, Integer anio, Autor autor, Editorial editorial, Integer ejemplares, Integer ejemplaresPrestados, Integer ejemplaresRestantes) throws ErrorServicio {
-
+    public void guardarlibro(Long isbn, String titulo, Integer anio, Autor autor, Editorial editorial, Integer ejemplares) throws ErrorServicio {
         
-        
-        validarLibro(isbn, titulo, anio, autor, editorial, ejemplares, ejemplaresPrestados, ejemplaresRestantes);
+        validarLibro(isbn, titulo, anio, autor, editorial, ejemplares);
         
         Libro libro = new Libro();
         libro.setAlta(true);
@@ -35,15 +33,15 @@ public class LibroServicio {
         libro.setAnio(anio);
         libro.setAutor(autor);
         libro.setEditorial(editorial);
-        libro.setEjemplaresPrestados(ejemplaresPrestados);
         libro.setEjemplares(ejemplares);
-        libro.setEjemplaresRestantes(ejemplaresRestantes);
+        libro.setEjemplaresRestantes(ejemplares);
+        libro.setEjemplaresPrestados(0);
         libroReposit.save(libro);
-
+        
     }
-
-    public void validarLibro(Long isbn, String titulo, Integer anio, Autor autor, Editorial editorial, Integer ejemplares, Integer ejemplaresPrestados, Integer ejemplaresRestantes) throws ErrorServicio {
-
+    
+    public void validarLibro(Long isbn, String titulo, Integer anio, Autor autor, Editorial editorial, Integer ejemplares) throws ErrorServicio {
+        
         if (titulo == null || titulo.isEmpty()) {
             throw new ErrorServicio("el titulo no puede ser nulo");
         }
@@ -62,17 +60,17 @@ public class LibroServicio {
         if (ejemplares == null || ejemplares < 0) {
             throw new ErrorServicio("la cantidad de ejemplares no puede ser nulo");
         }
-
+        
     }
-
+    
     @Transactional
     public void modificarLibro(String id, Long isbn, String titulo, Integer anio, Autor autor, Editorial editorial, Integer ejemplares, Integer ejemplaresPrestados, Integer ejemplaresRestantes) throws ErrorServicio {
-
-        validarLibro(isbn, titulo, anio, autor, editorial, ejemplares, ejemplaresPrestados, ejemplaresRestantes);
-
+        
+        validarLibro(isbn, titulo, anio, autor, editorial, ejemplares);
+        
         Optional<Libro> resultado = libroReposit.findById(id);
         if (resultado.isPresent()) {
-
+            
             Libro libro = resultado.get();
             libro.setAlta(true);
             libro.setTitulo(titulo);
@@ -88,6 +86,35 @@ public class LibroServicio {
     }
 
     @Transactional
+    public void prestarLibro(String id) throws ErrorServicio {
+        
+        Optional<Libro> resultado = libroReposit.findById(id);
+        if (resultado.isPresent()) {
+            
+            Libro libro = resultado.get();
+            
+            libro.setEjemplaresPrestados(libro.getEjemplaresPrestados() + 1);
+            
+            libro.setEjemplaresRestantes(libro.getEjemplaresRestantes() - 1);
+            libroReposit.save(libro);
+        }
+    }
+     @Transactional
+    public void devolverLibro(String id) throws ErrorServicio {
+        
+        Optional<Libro> resultado = libroReposit.findById(id);
+        if (resultado.isPresent()) {
+            
+            Libro libro = resultado.get();
+            
+            libro.setEjemplaresPrestados(libro.getEjemplaresPrestados() - 1);
+            
+            libro.setEjemplaresRestantes(libro.getEjemplaresRestantes() + 1);
+            libroReposit.save(libro);
+        }
+    }
+
+    @Transactional
     public void dardeBaja(String id) {
         Optional<Libro> resultado = libroReposit.findById(id);
         if (resultado.isPresent()) {
@@ -95,9 +122,9 @@ public class LibroServicio {
             libro.setAlta(false);
             libroReposit.save(libro);
         }
-
+        
     }
-
+    
     @Transactional
     public void dardeAlta(String id) {
         Optional<Libro> resultado = libroReposit.findById(id);
@@ -106,6 +133,6 @@ public class LibroServicio {
             libro.setAlta(true);
             libroReposit.save(libro);
         }
-
+        
     }
 }

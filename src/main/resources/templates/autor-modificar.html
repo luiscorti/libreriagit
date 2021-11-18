@@ -11,7 +11,7 @@
         <p class="h1">AUTORES</p>
         <div th:if="${perfect}!=null" class="card text-white bg-success mb-3" >
             <div class="card-body">
-                <h5 class="card-title">ESO TILIN </h5>
+                <h5 class="card-title">BIEN PERRO </h5>
                 <p class="card-text" th:text="${perfect}"></p>
             </div>
         </div>
@@ -21,38 +21,15 @@
                 <p class="card-text" th:text="${mal}"></p>
             </div>
         </div>
-        <table class="table">
-            <thead>
-                <tr class="table-success">
-                    <th scope="col">ID</th>
-                    <th scope="col">NOMBRE</th>
-                    <th scope="col">EDITAR</th>
-                    <th scope="col">BAJA/ALTA</th>
-
-                </tr>
-            </thead>
-
-            <tbody th:each="autor : ${autores}">
-                <tr class="table-success">
-                    <th scope="row" th:text="${autor.id}"></th>
-                    <td th:text="${autor.nombre}"></td>
-                    <td class="table-primary"><a class="btn btn-danger" th:href="@{/autor/modificar/__${autor.id}__}" role="button">EDITAR</a>
-                   
-                    <td class="table-primary">
-                        <i th:if="${autor.alta}" >ALTA</i>
-                        <i th:unless="${autor.alta}" >BAJA</i>
-                    </td>
-                    </td>
-                </tr>
-
-            </tbody>
+        
         </table>
-        <p class="h1">ingresar autor</p>
+        <p class="h1">modificar autor</p>
 
-        <form th:action="@{/autor/registro}" method="POST">
+        <form th:action="@{/autor/modificar/__${autor.id}__}" method="POST">
+            <input hidden th:value="id" name="id">
             <div class="mb-3">
                 <label >NOMBRE</label>
-                <input type="text" class="form-control" name="nombre"  >
+                <input th:value="${autor.nombre}" type="text" class="form-control" name="nombre"  >
 
             </div>
 
